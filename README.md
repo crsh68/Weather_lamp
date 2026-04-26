@@ -9,6 +9,7 @@ ESP32-based smart lamp that displays real-time weather conditions through dynami
 - **Real-time Weather Display**: Automatically fetches weather data from OpenWeatherMap API
 - **8 Weather Effects**: 
   - ☀️ Sunny - Warm sunrise/sunset gradient animation
+  - ⛅ Partly Cloudy - Sun animation with grey cloud movements
   - ☁️ Cloudy - Gentle grey cloud movements
   - 🌧️ Rain - Blue raindrops falling effect
   - ⛈️ Thunder - Lightning flashes with storm clouds
@@ -126,6 +127,7 @@ String city   = "YOUR_CITY";     // e.g., "London" or "New York"
 | OpenWeatherMap Condition | Display Effect |
 |-------------------------|----------------|
 | Clear | Sunny ☀️ |
+| Clear with some Clouds | Partly Cloudy⛅ |
 | Clouds | Cloudy ☁️ |
 | Rain, Drizzle | Rain 🌧️ |
 | Thunderstorm | Thunder ⛈️ |
@@ -172,6 +174,7 @@ weather-lamp/
 ├── effects_fog.h            # Fog/mist effect
 ├── effects_wind.h           # Wind/dust effect
 ├── effects_amber.h          # Amber alert effect
+├── effects_partly_cloudy.h   # Sun with clouds effect
 ├── README.md                # This file
 ├── LICENSE                  # MIT License
 └── .gitignore              # Git ignore rules
