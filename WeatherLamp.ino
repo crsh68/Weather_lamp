@@ -31,8 +31,7 @@ Preferences prefs;
 // ================= WIFI =================
 // Fallback kredencijali ako NVS nije popunjen
 const char* DEFAULT_SSID     = "YOUR_SSID";
-const char* DEFAULT_PASSWORD = "YOUR_PASS";
-
+const char* DEFAULT_PASSWORD = "YOUR_PASSWORD";
 
 // Aktivni kredencijali (ucitani iz NVS ili default)
 String wifiSSID     = "";
@@ -49,7 +48,7 @@ bool apActive         = false;
 bool newCredsReceived = false;
 
 // ================= WEATHER =================
-const char* DEFAULT_APIKEY = "YOUR_API";
+const char* DEFAULT_APIKEY = "YOUR_API_KEY";
 const char* DEFAULT_CITY   = "YOUR_CITY";
 
 String apiKey = "";
@@ -545,15 +544,17 @@ void handleButton() {
           if (brightness >= 5) lastBrightness = brightness;
           brightness = 0;
           renderingEnabled = false;
-          if (brightnessChar) brightnessChar->setVal(0, true);
-          Serial.println("Button: Light OFF");
           fill_solid(leds, LED_COUNT, CRGB::Black);
           FastLED.show();
+          if (powerChar)      powerChar->setVal(false, true);
+          if (brightnessChar) brightnessChar->setVal(0, true);
+          Serial.println("Button: Light OFF");
         } else {
           brightness = lastBrightness;
           if (brightness < 5) brightness = 20;
           renderingEnabled = true;
           FastLED.setBrightness(map(brightness, 0, 100, 0, 255));
+          if (powerChar)      powerChar->setVal(true, true);
           if (brightnessChar) brightnessChar->setVal(brightness, true);
           Serial.print("Button: Light ON - ");
           Serial.print(brightness);
